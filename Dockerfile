@@ -1,11 +1,6 @@
 
-#ME FUNCIONO PONIENDO '--ignore-engines' LUEGO DE LOS YARN INSTALL
-#COMANDO: docker compose -f docker-compose.prod.yaml --env-file .env.prod up --build
-#Levantar se ya fue buildeado antes: docker compose -f docker-compose.prod.yaml --env-file .env.prod up -d  
 
-# Install dependencies only when needed
 FROM node:18-alpine3.15 AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
@@ -34,18 +29,5 @@ COPY --from=builder /app/dist ./dist
 #FUNCIONO PONIENDO ESTA LINEA
 COPY --from=builder /app/public ./public  
 
-
-# # Copiar el directorio y su contenido
-# RUN mkdir -p ./pokedex
-
-# COPY --from=builder ./app/dist/ ./app
-# COPY ./.env ./app/.env
-
-# # Dar permiso para ejecutar la applicación
-# RUN adduser --disabled-password pokeuser
-# RUN chown -R pokeuser:pokeuser ./pokedex
-# USER pokeuser
-
-# EXPOSE 3000
 
 CMD [ "node","dist/main" ]
