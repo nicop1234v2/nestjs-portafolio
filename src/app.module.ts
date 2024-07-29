@@ -16,7 +16,7 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname,'..','public'), }),
       
-    MongooseModule.forRoot('mongodb://portafolio-mongodb:27017/portafolio-db', {
+    MongooseModule.forRoot(process.env.MONGODB, {
         dbName: 'portafolio-db',
       }),
 

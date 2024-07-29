@@ -11,9 +11,9 @@ import { UserRoleGuard } from './guards/user-role.guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Auth(ValidRoles.superUser)
   @Post('register')
-  create(@Body() createUserDto: CreateUserDto, @GetUser() user: User) {
+  @Auth(ValidRoles.superUser)
+  create(@Body() createUserDto: CreateUserDto) {
     return this.authService.create(createUserDto);
   }
 

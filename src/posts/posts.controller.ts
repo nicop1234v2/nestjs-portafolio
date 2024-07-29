@@ -22,7 +22,7 @@ export class PostsController {
 
   @Post()
   @Auth(ValidRoles.superUser)
-  create(@Body() createPostDto: CreatePostDto, @GetUser() user: User) {
+  create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }
 
