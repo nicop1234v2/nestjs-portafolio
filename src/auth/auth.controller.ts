@@ -32,13 +32,5 @@ export class AuthController {
   ){
     return this.authService.checkAuthStatus( user )
   }
-
-  @Get('private')
-  @UseGuards( AuthGuard())
-  check(){
-    return 'hola'
-  }
-
-
   
 }

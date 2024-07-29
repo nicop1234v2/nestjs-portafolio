@@ -7,7 +7,6 @@ import { Model } from "mongoose";
 import { JwtPayload } from "../interfaces/jwt-payload.interface";
 import { User } from "../entities/user.entity";
 
-
 @Injectable()
 export class JwtStrategy extends PassportStrategy( Strategy ){
 
@@ -22,14 +21,11 @@ export class JwtStrategy extends PassportStrategy( Strategy ){
         })
     }
 
-
-    async validate( payload: JwtPayload ): Promise<User> {
-        
+    async validate( payload: JwtPayload ): Promise<User> {        
         const user = await this.userModel.findById(payload.id)
 
         if ( !user )
             throw new UnauthorizedException('Token not valid')
-
         return user;
     } 
 
