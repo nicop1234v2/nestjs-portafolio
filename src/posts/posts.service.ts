@@ -26,7 +26,7 @@ export class PostsService {
       this.handleExceptions(error);
     }
 
-    return 'This action adds a new post';
+    return 'This action add post';
   }
 
    async findAll(paginatioDto: PaginatioDto) {
