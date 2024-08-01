@@ -10,12 +10,10 @@ import { join } from 'path';
   imports: [
     
     ConfigModule.forRoot(),
-
-    
-    
+    /*
     ServeStaticModule.forRoot({
       rootPath: join(__dirname,'..','public'), }),
-      
+    */
     MongooseModule.forRoot(process.env.MONGODB, {
         dbName: 'portafolio-db',
       }),
